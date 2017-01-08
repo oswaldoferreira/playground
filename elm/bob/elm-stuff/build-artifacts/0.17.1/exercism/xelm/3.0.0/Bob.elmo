@@ -1,0 +1,35 @@
+var _exercism$xelm$Bob$upcaseCount = function (message) {
+	return _elm_lang$core$List$length(
+		A3(
+			_elm_lang$core$Regex$find,
+			_elm_lang$core$Regex$All,
+			_elm_lang$core$Regex$regex('[A-Z]'),
+			message));
+};
+var _exercism$xelm$Bob$downcaseCount = function (message) {
+	return _elm_lang$core$List$length(
+		A3(
+			_elm_lang$core$Regex$find,
+			_elm_lang$core$Regex$All,
+			_elm_lang$core$Regex$regex('[a-z]'),
+			message));
+};
+var _exercism$xelm$Bob$moreUpcaseThanLower = function (message) {
+	return _elm_lang$core$Native_Utils.cmp(
+		_exercism$xelm$Bob$upcaseCount(message),
+		_exercism$xelm$Bob$downcaseCount(message)) > 0;
+};
+var _exercism$xelm$Bob$hasExclamation = function (message) {
+	return A2(
+		_elm_lang$core$Regex$contains,
+		_elm_lang$core$Regex$regex('!'),
+		message);
+};
+var _exercism$xelm$Bob$yelling = function (message) {
+	return (_exercism$xelm$Bob$hasExclamation(message) && _exercism$xelm$Bob$moreUpcaseThanLower(message)) || _exercism$xelm$Bob$moreUpcaseThanLower(message);
+};
+var _exercism$xelm$Bob$hey = function (message) {
+	return _exercism$xelm$Bob$yelling(message) ? 'Whoa, chill out!' : (A2(_elm_lang$core$String$endsWith, '?', message) ? 'Sure.' : (_elm_lang$core$Native_Utils.eq(
+		_elm_lang$core$String$trim(message),
+		'') ? 'Fine. Be that way!' : 'Whatever.'));
+};
